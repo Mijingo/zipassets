@@ -22,7 +22,7 @@ class ZipAssetsService extends BaseApplicationComponent
      *
      * @return string
      */
-    public function download($files, $filename)
+    public function download($files, $directoryname, $filename)
     {
         // Get assets
         $criteria = craft()->elements->getCriteria(ElementType::Asset);
@@ -52,7 +52,13 @@ class ZipAssetsService extends BaseApplicationComponent
                 $file = $sourceType->getLocalCopy($asset);
 
                 // Add to zip
-                $zip->addFromString($asset->filename, IOHelper::getFileContents($file));
+                // if directory desired (not null)
+                if (isset($directoryname)) {
+                    $zip->addFromString($directoryname . '/' . $asset->filename, IOHelper::getFileContents($file));
+                } else {
+                    $zip->addFromString($asset->filename, IOHelper::getFileContents($file));
+                }
+
 
                 // Remove the file
                 IOHelper::deleteFile($file);

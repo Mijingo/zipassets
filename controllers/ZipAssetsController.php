@@ -26,6 +26,9 @@ class ZipAssetsController extends BaseController
      */
     public function actionDownload()
     {
+        // Get wanted directory name
+        $directoryname = craft()->request->getParam('directoryname');
+
         // Get wanted filename
         $filename = craft()->request->getRequiredParam('filename');
 
@@ -33,7 +36,7 @@ class ZipAssetsController extends BaseController
         $files = craft()->request->getRequiredParam('files');
 
         // Generate zipfile
-        $zipfile = craft()->zipAssets->download($files, $filename);
+        $zipfile = craft()->zipAssets->download($files, $directoryname, $filename);
 
         // Get zip filename
         $zipname = IOHelper::getFileName($zipfile);

@@ -13,6 +13,7 @@ Example
 	{{ getCsrfInput() }}
     <input type="hidden" name="action" value="zipAssets/download">
     <input type="hidden" name="filename" value="your-zipfile">
+    <input type="hidden" name="directoryname" value="your-directory-name">
 
     <input type="checkbox" name="files[]" value="123"><!-- asset id -->
     <input type="checkbox" name="files[]" value="234"><!-- asset id -->
@@ -22,7 +23,7 @@ Example
 ```
 
 Via url:
-/actions/zipAssets/download?filename=your-zipfile&files[]=123&files[]=234
+/actions/zipAssets/download?directoryname=your-directory-name&filename=your-zipfile&files[]=123&files[]=234
 
 Roadmap
 =================

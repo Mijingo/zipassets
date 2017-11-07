@@ -54,7 +54,7 @@ class ZipAssetsTest extends BaseTest
         $filename = 'test';
 
         $service = new ZipAssetsService();
-        $zipfile = $service->download($files, $filename);
+        $zipfile = $service->download($files, $directoryname, $filename);
 
         // check if we got a zip
         $this->assertFileExists($zipfile);
@@ -74,7 +74,7 @@ class ZipAssetsTest extends BaseTest
         $filename = str_repeat('longfilename', 256 * 256);
 
         $service = new ZipAssetsService();
-        $zipfile = $service->download($files, $filename);
+        $zipfile = $service->download($files, $directoryname, $filename);
 
         // check if we got a zip
         $this->assertFileExists($zipfile);
