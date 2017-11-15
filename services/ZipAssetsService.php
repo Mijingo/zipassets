@@ -31,7 +31,7 @@ class ZipAssetsService extends BaseApplicationComponent
         $assets = $criteria->find();
 
         // Set destination zip
-        $destZip = craft()->path->getTempPath().$filename.'_'.time().'.zip';
+        $destZip = craft()->path->getTempPath().$filename.'_.zip';
 
         // Create zip
         $zip = new \ZipArchive();
